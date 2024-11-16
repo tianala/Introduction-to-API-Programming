@@ -27,13 +27,14 @@ class FlaskDBMSTestCase(unittest.TestCase):
         conn.close()
 
     def tearDown(self):
-        """Tear down test resources."""
+        """Clean up the database after each test."""
         conn = get_db_connection()
         cursor = conn.cursor()
-        cursor.execute("DROP TABLE IF EXISTS books")
+        cursor.execute("DELETE FROM books")
         conn.commit()
         cursor.close()
         conn.close()
+
 
     def test_get_all_books(self):
         response = self.app.get("/api/books_dbms")
