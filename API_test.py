@@ -26,14 +26,14 @@ class FlaskDBMSTestCase(unittest.TestCase):
         cursor.close()
         conn.close()
 
-    def tearDown(self):
-        """Clean up the database after each test."""
-        conn = get_db_connection()
-        cursor = conn.cursor()
-        cursor.execute("DELETE FROM books")
-        conn.commit()
-        cursor.close()
-        conn.close()
+    # def tearDown(self):
+    #     """Clean up the database after each test."""
+    #     conn = get_db_connection()
+    #     cursor = conn.cursor()
+    #     cursor.execute("DELETE FROM books")
+    #     conn.commit()
+    #     cursor.close()
+    #     conn.close()
 
 
     def test_get_all_books(self):
